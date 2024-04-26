@@ -1,0 +1,174 @@
+:root {
+    --primary-color: #ffa500;
+    --text-color: #fff;
+    --background-color: #191b27;
+
+    /* --debug-color: transparent; */
+    --debug-color: var(--primary-color);
+}
+
+.custom-body{
+    background: var(--background-color);
+    height: 100%;
+    color: var(--text-color)
+}
+
+.header-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+    color: var(--text-color);
+    margin-top: 2rem;
+
+    border: 1px solid var(--debug-color);
+}
+
+.header-container h1 {
+    text-align: center;
+    font-size: 5rem;
+}
+
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+
+    margin-top: .5rem;
+    
+}
+
+.sub-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    max-width: 450px;
+    position: relative;
+
+    border: 1px solid var(--debug-color);
+}
+
+.game {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, .3);
+    width: 80%;
+    max-width: 750px;
+}
+
+.fancy-background {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    background: #1e2328;
+    font-size: 1rem;
+    padding: .8rem .2rem;
+    vertical-align: center;
+    align-content: center;
+    justify-self: center;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.answers {
+    width: 80%;
+}
+
+.guessbox {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    position: relative;
+}
+
+.character-item {
+    background-color: #1e2328;
+    padding: 8px 15px !important;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.character-item:hover {
+    background-color: #292d30;
+}
+
+.character-select {
+    display: flex;
+    flex-direction: row;
+    column-gap: 1rem;
+    align-items: center;
+    text-align: center;
+}
+
+.character-select img {
+    width: 40px;
+    aspect-ratio: auto 40 / 40;
+    height: 40px;
+}
+
+.content {
+    margin-top: 15px;
+    padding-bottom: 20px;
+    width: 360px;
+}
+
+.content .search {
+    position: relative;
+}
+
+.search input {
+    height: 70px;
+    margin-bottom: 5px;
+    color: var(--text-color);
+    background-position: right 10px center;
+    background-repeat: no-repeat;
+    background-color: #1e2328;
+    border: 1px solid var(--debug-color);
+    pointer-events: auto;
+    flex: 1 1;
+    margin-top: 0;
+    min-width: 0;
+    position: relative;
+    line-height: 20px;
+    max-width: 100%;
+    width: 100%;
+    padding: 0 15px 0 15px;
+}
+
+.options {
+    width: 100%;
+    background-color: #1e2328;
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: absolute;
+}
+
+.options p {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.options::-webkit-scrollbar{
+    width: 7px;
+}
+
+.options::-webkit-scrollbar-track{
+    background: var(--background-color);
+}
+
+.options::-webkit-scrollbar-thumb{
+    background: var(--primary-color);
+}
