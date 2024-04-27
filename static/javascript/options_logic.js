@@ -125,8 +125,18 @@ searchInp.addEventListener('keydown', function(event){
     }
 })
 
-searchInp.addEventListener('blur', function(){
-    options.style.display = 'none';
+// searchInp.addEventListener('blur', function(){
+//     options.style.display = 'none';
+// });
+
+document.addEventListener('click', function(event) {
+    // Check if the clicked element is not the div itself or a child of the div
+    if (event.target !== options && !options.contains(event.target)
+        && event.target !== searchInp && !searchInp.contains(event.target)) {
+        if (!(document.activeElement == searchInp)){
+            options.style.display = 'none';
+        }
+    }
 });
 
 searchInp.addEventListener('focus', function(){
@@ -147,9 +157,13 @@ function updateChoice(div, character)
 {
     console.log("Just selected the character " + character);
     searchInp.value = '';
+    prevInput = "";
+    characterDivs = [];
     characters = characters.filter(item => item !== character);
     alreadyChosenCharacters.push(character);
     options.innerHTML = '';
+
+    addGuessToDiv(sendGuess(character), loadCharacter(character))
 }
 
 function setCharacters(){
@@ -218,8 +232,63 @@ async function makeGuessFetch(character_name){
 async function sendGuess(character_name){
     let guess = await makeGuessFetch(character_name);
     guess = JSON.parse(guess)
-    console.log(guess)
     return guess;
 }
 
-sendGuess('Felix Argyle')
+async function addGuessToDiv(guess_data, character_data){
+    let answersDiv = document.querySelector(".user-answer");
+
+    GD = await guess_data
+    CD = await character_data
+
+    const squareContent = [
+        "static/img/Character-Portraits/" + CD['Character'] + '.png',
+        CD.Gender,
+        CD.Race,
+        CD.Height,
+        CD.Age,
+        CD.Afiliation,
+        CD["Elemental Affinity"],
+        CD["Divine Protection"],
+        CD["Authority"]
+    ];
+
+    const info = [
+        "Gender", "Race", "Height", "Age",
+        "Afiliation", "Elemental Affinity",
+        "Divine Protection", "Authority"
+    ]
+
+    const container = document.createElement('div');
+    container.classList.add('square-container');
+
+    let i = 0;
+    squareContent.forEach(content => {
+        const square = document.createElement('div');
+        square.classList.add('square', 'square-answer-tile');
+    
+        const squareContent = document.createElement('div');
+        squareContent.classList.add('square-content');
+
+        if (i==0){
+            let img = document.createElement('img');
+            img.src = content;
+            squareContent.append(img);
+        } else {
+            squareContent.innerHTML = content;
+            if (GD[info[i-1]] == "incorrect"){
+                square.classList.add("guess-incorrect");
+            } else if (GD[info[i-1]] == "partial"){
+                square.classList.add("guess-partial");
+            } else if (GD[info[i-1]] == "correct") {
+                square.classList.add("guess-correct");
+            }
+        }
+        i++;
+    
+        square.appendChild(squareContent);
+        container.appendChild(square);
+    });
+    
+    answersDiv.prepend(container);
+}

@@ -22,8 +22,6 @@ def load_character_stats():
 @app.route('/guess', methods=['POST'])
 def guess():
     data = request.json
-    print(data)
-    print("*" * 500)
     answer = data['Answer']
     guess = data['Guess']
 

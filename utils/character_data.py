@@ -13,7 +13,7 @@ class CharacterData:
     
     def load_character_stats(self, character):
         character_df = self.df[self.df['Character'] == character]
-        return character_df.iloc[0].to_dict()
+        return {k:str(v) for k,v in character_df.iloc[0].to_dict().items()}
     
     def character_guess(self, answer, guess):
         #GUESS WILL BE True WHEN CORRECT
@@ -22,6 +22,9 @@ class CharacterData:
         data = {}
         answer = self.df[self.df['Character'] == answer].iloc[0].to_dict()
         guess = self.df[self.df['Character'] == guess].iloc[0].to_dict()
+
+        answer = {k:str(v).strip() for k,v in answer.items()}
+        guess = {k:str(v).strip() for k,v in guess.items()}
 
         data['Guess'] = 'correct' if answer['Character'] == guess['Character'] else 'incorrect'
         data['Race'] = checkPartial(answer['Race'], guess['Race'])
