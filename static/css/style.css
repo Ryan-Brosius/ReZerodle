@@ -3,14 +3,20 @@
     --text-color: #fff;
     --background-color: #191b27;
 
+    /* Colors for debugging menus & stuff */
     /* --debug-color: transparent; */
     --debug-color: var(--primary-color);
+
+    /* Colors of da squares */
+    --correct-color: #00b42d;
+    --partial-correct-color: #e48e0d;
+    --incorrect-color: #ff3131;
 }
 
 .custom-body{
     background: var(--background-color);
     height: 100%;
-    color: var(--text-color)
+    color: var(--text-color);
 }
 
 .header-container{
@@ -175,4 +181,107 @@
 
 .options::-webkit-scrollbar-thumb{
     background: var(--primary-color);
+}
+
+.guessed-answers {
+    z-index: -99;
+    position: relative;
+    display: block;
+}
+
+.guessed-answers-header{
+    width: 180%;
+    margin: 0px 0px 0px -40%;
+}
+
+.guessed-answers-container{
+    width: 180%;
+    margin: 0px 0px 0px -40%;
+}
+
+.square-container{
+    margin-bottom: .7rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.square{
+    position: relative;
+    margin: 2px;
+    box-sizing: border-box;
+}
+
+.square-header-tile{
+    flex-basis: calc(11.11% - 4px);
+    border: none !important;
+    font-size: .9rem;
+}
+
+.square-content{
+    box-shadow: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding-top: 0;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    cursor: default;
+    text-shadow: 0 0 3px #000;
+}
+
+.square::before{
+    padding-top: 80% !important;
+    content: "";
+    display: block;
+}
+
+.square-container hr {
+    width: 90%;
+    border-left: none;
+    border-top: none;
+    border-right: none;
+    border-bottom: 3px solid #fff;
+    display: block;
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+    unicode-bidi: isolate;
+    overflow: hidden;
+}
+
+.user-answer{
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.square-answer-tile{
+    min-height: 75px;
+    flex-basis: calc(11.11% - 4px);
+    position: relative;
+    margin: 2px;
+    border: 1px solid hsla(0, 0%, 100%, .59);
+    box-sizing: border-box;
+    box-shadow: inset 0 0 6px #000;
+}
+
+.guess-incorrect{
+    background-color: var(--incorrect-color);
+}
+
+.guess-partial{
+    background-color: var(--partial-correct-color);
+}
+
+.guess-correct{
+    background-color: var(--correct-color);
+}
+
+.square-content img{
+    width: 100%;
+    background-color: black;
 }

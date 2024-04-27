@@ -20,7 +20,7 @@ function addCharacter(characters)
         div.classList.add('character-item');
         div.innerHTML = `<div class="character-select">
                                <div>
-                                   <img src="img/miku.jpg">
+                                   <img src="static/img/miku.jpg">
                                </div>
                             <div>
                                 ${char}
