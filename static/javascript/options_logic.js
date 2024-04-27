@@ -4,9 +4,11 @@ options = guessbox.querySelector(".options");
 searchInp = guessbox.querySelector("input");
 
 //Array we will store the characters in
-let characters = ["Subaru", "Miku", "Tyler", "Emilia", "Test", "More", "C++", "openGL", "ASDFHECK", "test boobs", "Joe Biden"];
+let characters = [];
+setCharacters()
 let alreadyChosenCharacters = []
 let characterDivs = []
+let answer = loadCharacter("Subaru Natsuki");
 
 function addCharacter(characters)
 {
@@ -20,7 +22,7 @@ function addCharacter(characters)
         div.classList.add('character-item');
         div.innerHTML = `<div class="character-select">
                                <div>
-                                   <img src="static/img/miku.jpg">
+                                   <img src="static/img/Character-Portraits/${char}.png">
                                </div>
                             <div>
                                 ${char}
@@ -149,3 +151,75 @@ function updateChoice(div, character)
     alreadyChosenCharacters.push(character);
     options.innerHTML = '';
 }
+
+function setCharacters(){
+    fetch('/get_characters')
+    .then(response => response.json())
+    .then(data => {
+        characters = data;
+    })
+    .catch(error => console.log('Error: ', error));
+}
+
+function loadCharacterFetch(character_name){
+    const data = {
+        'Character' : character_name
+    };
+
+    return fetch('/load_character_stats', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        if (!response.ok) {
+            console.log("Loading character " + character_name + " failed")
+        }
+        return response.text();
+    })
+    .catch(error => {
+        console.log(error);
+    });
+}
+
+async function loadCharacter(character_name){
+    let character = await loadCharacterFetch(character_name);
+    return JSON.parse(character);
+}
+
+async function makeGuessFetch(character_name){
+    let character_answer = await answer
+
+    const data = {
+        'Answer' : character_answer.Character,
+        'Guess' : character_name
+    };
+
+    return fetch('/guess', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        if (!response.ok) {
+            console.log("Guess for " + character_name + " failed")
+        }
+        return response.text();
+    })
+    .catch(error => {
+        //console.log(error);
+    });
+}
+
+async function sendGuess(character_name){
+    let guess = await makeGuessFetch(character_name);
+    guess = JSON.parse(guess)
+    console.log(guess)
+    return guess;
+}
+
+sendGuess('Felix Argyle')
