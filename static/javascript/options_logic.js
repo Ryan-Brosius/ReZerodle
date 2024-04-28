@@ -276,7 +276,6 @@ async function addGuessToDiv(guess_data, character_data){
     container.classList.add('square-container');
 
     let i = 0;
-    //3 = HEIGHT;  4 = AGE;
 
     divs = []
     squareContent.forEach(content => {
@@ -318,6 +317,7 @@ async function addGuessToDiv(guess_data, character_data){
             div.classList.remove('active');
         }, index * 700 + 100);
 
+        //3 = AGE;  2 = HEIGHT;
         setTimeout(() => {
             div.classList.remove('animation-fix');
 
@@ -326,6 +326,8 @@ async function addGuessToDiv(guess_data, character_data){
                     div.classList.add('square-up')
                 } else if (GD["AgeArrow"] == 'lower'){
                     div.classList.add('square-down')
+                } else if (GD['AgeArrow'] == 'undefined'){
+                    div.classList.add('square-unknown')
                 }
             }
 
@@ -334,6 +336,8 @@ async function addGuessToDiv(guess_data, character_data){
                     div.classList.add('square-up')
                 } else if (GD["HeightArrow"] == 'lower'){
                     div.classList.add('square-down')
+                } else if (GD['HeightArrow'] == 'undefined'){
+                    div.classList.add('square-unknown')
                 }
             }
 

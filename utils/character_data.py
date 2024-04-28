@@ -48,6 +48,8 @@ def compareNumb(answer, guess):
 
     print(answer, guess)
 
+    if answer == guess:
+        return 'correct'
     if not answer or not guess:
         return 'undefined'
     if int(answer) > int(guess):

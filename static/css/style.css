@@ -239,6 +239,18 @@
     display: block;
 }
 
+.square-unknown::after{
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    clip-path: polygon(0% 0%, 100% 0%, 0% 100%);
+    background: rgba(0, 0, 0, .5);
+    top: 1px;
+    left: 0;
+    z-index: -1;
+}
+
 .square-down::after{
     content: "";
     position: absolute;
@@ -260,6 +272,7 @@
     background: rgba(0, 0, 0, .5);
     top: 1px;
     left: 0;
+    z-index: -1;
 }
 
 .square-container hr {
