@@ -251,8 +251,8 @@ async function sendGuess(character_name){
 async function addGuessToDiv(guess_data, character_data){
     let answersDiv = document.querySelector(".user-answer");
 
-    GD = await guess_data
-    CD = await character_data
+    let GD = await guess_data
+    let CD = await character_data
 
     const squareContent = [
         "static/img/Character-Portraits/" + CD['Character'] + '.png',
@@ -276,6 +276,7 @@ async function addGuessToDiv(guess_data, character_data){
     container.classList.add('square-container');
 
     let i = 0;
+    //3 = HEIGHT;  4 = AGE;
 
     divs = []
     squareContent.forEach(content => {
@@ -303,6 +304,7 @@ async function addGuessToDiv(guess_data, character_data){
                 square.classList.add("guess-correct");
             }
         }
+
         i++;
     
         square.appendChild(squareContent);
@@ -318,6 +320,23 @@ async function addGuessToDiv(guess_data, character_data){
 
         setTimeout(() => {
             div.classList.remove('animation-fix');
+
+            if (index == 3){
+                if (GD["AgeArrow"] == 'higher'){
+                    div.classList.add('square-up')
+                } else if (GD["AgeArrow"] == 'lower'){
+                    div.classList.add('square-down')
+                }
+            }
+
+            if (index == 2){
+                if (GD["HeightArrow"] == 'higher'){
+                    div.classList.add('square-up')
+                } else if (GD["HeightArrow"] == 'lower'){
+                    div.classList.add('square-down')
+                }
+            }
+
         }, index * 700 + 100 + 350);
     });
 }

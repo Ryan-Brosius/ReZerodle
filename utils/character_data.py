@@ -1,6 +1,7 @@
 
 import pandas as pd
 import os
+import re
 
 class CharacterData:
     def __init__(self):
@@ -35,9 +36,26 @@ class CharacterData:
         data['Afiliation'] = 'correct' if answer['Afiliation'] == guess['Afiliation'] else 'incorrect'
         data['Divine Protection'] = 'correct' if answer['Divine Protection'] == guess['Divine Protection'] else 'incorrect'
         data['Age'] = 'correct' if answer['Age'] == guess['Age'] else 'incorrect'
+
+        data['AgeArrow'] = compareNumb(answer['Age'], guess['Age'])
+        data['HeightArrow'] = compareNumb(answer['Height'], guess['Height'])
+
         return data
 
-        
+def compareNumb(answer, guess):
+    answer = re.sub(r'\D', '', answer)
+    guess = re.sub(r'\D', '', guess)
+
+    print(answer, guess)
+
+    if not answer or not guess:
+        return 'undefined'
+    if int(answer) > int(guess):
+        return 'higher'
+    if int(guess) > int(answer):
+        return 'lower'
+    return 'correct'
+
 # Used for Race, Elemental Affinity
 def checkPartial(answer, guess):
     answer = {a.strip() for a in answer.split(",")}

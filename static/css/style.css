@@ -239,6 +239,29 @@
     display: block;
 }
 
+.square-down::after{
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    clip-path: polygon(97% 60%, 80% 60%, 80% 5%, 20% 5%, 20% 60%, 3% 60%, 50% 95%);
+    background: rgba(0, 0, 0, .5);
+    top: 1px;
+    left: 0;
+    z-index: -1;
+}
+
+.square-up::after{
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    clip-path: polygon(97% 40%, 80% 40%, 80% 95%, 20% 95%, 20% 40%, 3% 40%, 50% 5%);
+    background: rgba(0, 0, 0, .5);
+    top: 1px;
+    left: 0;
+}
+
 .square-container hr {
     width: 90%;
     border-left: none;
