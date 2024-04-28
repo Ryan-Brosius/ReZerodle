@@ -8,7 +8,16 @@ let characters = [];
 setCharacters()
 let alreadyChosenCharacters = []
 let characterDivs = []
-let answer = loadCharacter("Subaru Natsuki");
+let answer = loadCharacter(chooseRandomCharacter())
+
+async function chooseRandomCharacter() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const random = characters[Math.floor(Math.random() * characters.length)];
+            resolve(random);
+        }, 300);
+    });
+}
 
 function addCharacter(characters)
 {
@@ -199,6 +208,10 @@ function loadCharacterFetch(character_name){
 }
 
 async function loadCharacter(character_name){
+    if (character_name instanceof Promise) {
+        character_name = await character_name;
+    }
+
     let character = await loadCharacterFetch(character_name);
     return JSON.parse(character);
 }
@@ -263,6 +276,8 @@ async function addGuessToDiv(guess_data, character_data){
     container.classList.add('square-container');
 
     let i = 0;
+
+    divs = []
     squareContent.forEach(content => {
         const square = document.createElement('div');
         square.classList.add('square', 'square-answer-tile');
@@ -275,6 +290,10 @@ async function addGuessToDiv(guess_data, character_data){
             img.src = content;
             squareContent.append(img);
         } else {
+            divs.push(square);
+            square.classList.add('box-animation')
+            square.classList.add('active');
+            square.classList.add('animation-fix');
             squareContent.innerHTML = content;
             if (GD[info[i-1]] == "incorrect"){
                 square.classList.add("guess-incorrect");
@@ -289,6 +308,16 @@ async function addGuessToDiv(guess_data, character_data){
         square.appendChild(squareContent);
         container.appendChild(square);
     });
-    
+
     answersDiv.prepend(container);
+
+    divs.forEach((div, index) => {
+        setTimeout(() => {
+            div.classList.remove('active');
+        }, index * 700 + 100);
+
+        setTimeout(() => {
+            div.classList.remove('animation-fix');
+        }, index * 700 + 100 + 350);
+    });
 }

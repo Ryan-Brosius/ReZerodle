@@ -230,7 +230,7 @@
     text-align: center;
     align-items: center;
     cursor: default;
-    text-shadow: 0 0 3px #000;
+    /* text-shadow: 0 0 3px #000; */
 }
 
 .square::before{
@@ -267,6 +267,11 @@
     border: 1px solid hsla(0, 0%, 100%, .59);
     box-sizing: border-box;
     box-shadow: inset 0 0 6px #000;
+    text-shadow: 0 0 3px #000;
+}
+
+.square-answer-tile:hover .box-animation {
+    transform: rotateY(180deg);
 }
 
 .guess-incorrect{
@@ -285,3 +290,25 @@
     width: 100%;
     background-color: black;
 }
+
+/* TESTING LIKE THE ANIMATION SHIT */
+.box-animation {
+    transform-style: preserve-3d;
+    transition: transform .7s linear;
+}
+
+.box-animation.active {
+    color: transparent;
+    transition: transform 2s;
+    background: var(--background-color);
+    font-size: 0;
+    transform: rotateY(180deg);
+}
+
+.animation-fix {
+    color: transparent;
+    background: transparent;
+    text-shadow: 0 0 0px transparent;
+}
+
+
