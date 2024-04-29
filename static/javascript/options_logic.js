@@ -8,7 +8,8 @@ let characters = [];
 setCharacters()
 let alreadyChosenCharacters = []
 let characterDivs = []
-let answer = loadCharacter(chooseRandomCharacter())
+let answer = loadDailyCharacterFetch()
+let numOfGuesses = 0
 
 async function chooseRandomCharacter() {
     return new Promise((resolve, reject) => {
@@ -65,6 +66,7 @@ function addCharFromSearch(){
     if (arr.length == 0 && searchVal != "")
     {
         options.innerHTML = '<p> No Character Found!! </p>';
+        addCharacter(arr);
     } else {
         addCharacter(arr);
     }
@@ -165,6 +167,8 @@ function clearSelections() {
 function updateChoice(div, character)
 {
     console.log("Just selected the character " + character);
+    numOfGuesses++;
+    console.log(numOfGuesses)
     searchInp.value = '';
     prevInput = "";
     characterDivs = [];
@@ -253,6 +257,13 @@ async function addGuessToDiv(guess_data, character_data){
 
     let GD = await guess_data
     let CD = await character_data
+
+
+    if (GD['Guess'] == 'correct'){
+        setTimeout(() => {
+            correctGuessTriggered()
+        }, 5000);
+    }
 
     const squareContent = [
         "static/img/Character-Portraits/" + CD['Character'] + '.png',
@@ -343,4 +354,72 @@ async function addGuessToDiv(guess_data, character_data){
 
         }, index * 700 + 100 + 350);
     });
+}
+
+
+function loadDailyCharacterFetch() {
+    return fetch('/load_daily_character_stats')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to fetch data');
+            }
+            return response.json();
+        })
+        .then(data => {
+            return data;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            return null;
+        });
+}
+
+async function loadWinningDiv(){
+    let charAnswer = await answer
+    charAnswer = charAnswer['Character']
+
+    let winningDiv = document.querySelector('.win-screen');
+
+    let imgtextdiv = document.createElement('div')
+    imgtextdiv.classList.add("win-answer")
+
+    let imgdiv = document.createElement('div');
+    let portrait = document.createElement('img');
+    portrait.src = "/static/img/Character-Portraits/" + charAnswer + '.png';
+    imgdiv.appendChild(portrait)
+
+    let textdiv = document.createElement('div');
+    let spanElement = document.createElement('span');
+    let brElement = document.createElement('br');
+    let spanElement2 = document.createElement('span');
+    spanElement.classList.add("win-answer-text");
+    spanElement2.classList.add("win-answer-name");
+    spanElement.textContent = "You guessed";
+    spanElement2.textContent = charAnswer;
+
+    textdiv.appendChild(spanElement)
+    textdiv.appendChild(brElement)
+    textdiv.appendChild(spanElement2)
+
+    imgtextdiv.appendChild(imgdiv)
+    imgtextdiv.appendChild(textdiv)
+
+    let nbdiv = document.createElement('div');
+    nbdiv.classList.add("nb-trys")
+    nbdiv.textContent = "You took " + numOfGuesses + " number of tries"
+
+    let timerdiv = document.querySelector('.timer-info');
+
+    winningDiv.appendChild(imgtextdiv)
+    winningDiv.appendChild(nbdiv)
+
+    console.log(timerdiv)
+
+    winningDiv.appendChild(timerdiv)
+}
+
+function correctGuessTriggered(){
+    let winningDiv = document.querySelector('.win-screen');
+    winningDiv.style.display = 'flex';
+    loadWinningDiv()
 }

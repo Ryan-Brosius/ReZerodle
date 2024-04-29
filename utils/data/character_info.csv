@@ -1,5 +1,5 @@
-Character,Race,Gender,Elemental Affinity,Authority,Height,Afiliation,Divine Protection,Age,Prioity
-Subaru Natsuki,Human,Male,"Yin, Water",Yes,173cm,Emilia Camp,No,17,T
+Character,Race,Gender,Elemental Affinity,Authority,Height,Afiliation,Divine Protection,Age,Priority
+Subaru Natsuki,Human,Male,"Yin, Water, Wind",Yes,173cm,Emilia Camp,No,17,T
 Emilia,"Human, Elf",Female,"Fire, Water, Wind, Earth",No,164cm,Emilia Camp,No,114,T
 Rem,Oni,Female,Water,No,154cm,Emilia Camp,No,18,T
 Beatrice,Spirit,Female,"Yin, Water, Wind",No,130cm,Emilia Camp,No,400+,T
@@ -14,8 +14,8 @@ Ryuzu,"Human, Elf",Female,N/A,No,135cm,Emilia Camp,No,400+,T
 Annarose Miload,Human,Female,N/A,No,135cm,Emilia Camp,No,9,F
 Clind,Unknown,Male,N/A,Yes,178cm,Emilia Camp,No,400+,T
 Meili Portroute,Human,Female,N/A,No,145cm,Emilia Camp,Yes,13,T
-Patrasche,Ground Dragon,Female,NA,No,Unkown,Emilia Camp,Yes,Unknown,T
-Frufoo,Ground Dragon,Female,N/A,No,Unkown,Emilia Camp,Yes,23,F
+Patrasche,Ground Dragon,Female,NA,No,Unknown,Emilia Camp,Yes,Unknown,T
+Frufoo,Ground Dragon,Female,N/A,No,Unknown,Emilia Camp,Yes,23,F
 Crusch Karsten,Human,Female,Wind,No,168cm,Crusch Camp,Yes,20,T
 Felix Argyle,"Human, Beast",Male,Water,No,172cm,Crusch Camp,Yes,19,T
 Wilhelm van Astrea,Human,Male,N/A,No,178cm,Crusch Camp,No,61,T
@@ -30,8 +30,8 @@ Ricardo Welkin,Demi-Human,Male,N/A,No,206cm,Anastasia Camp,No,39,T
 Mimi Pearlbaton,"Human, Beast",Female,"Earth, Water",No,110cm,Anastasia Camp,Yes,14,T
 Hetaro Pearlbaton,"Human, Beast",Male,Water,No,110cm,Anastasia Camp,Yes,14,T
 Tivey Pearlbaton,"Human, Beast",Male,Fire,No,110cm,Anastasia Camp,Yes,14,T
-Eridna,Spirit,Female,Yang,No,Unkown,Anastasia Camp,No,400+,T
-Shaknar,Ground Dragon,Male,N/A,No,Unkown,Anastasia Camp,Yes,Unknown,F
+Eridna,Spirit,Female,Yang,No,Unknown,Anastasia Camp,No,400+,T
+Shaknar,Ground Dragon,Male,N/A,No,Unknown,Anastasia Camp,Yes,Unknown,F
 Felt,Human,Female,N/A,No,150cm,Felt Camp,Yes,14,T
 Reinhard van Astrea,Human,Male,N/A,No,184cm,Felt Camp,Yes,19,T
 Valga Cromwell,Giant,Male,N/A,No,220cm,Felt Camp,No,120,T
@@ -39,23 +39,23 @@ Gaston,Human,Male,N/A,No,185cm,Felt Camp,No,25,F
 Rachins Hoffman,Human,Male,Fire,No,175cm,Felt Camp,No,22,F
 Camberley,Dwarf,Male,N/A,No,130cm,Felt Camp,Yes,23,F
 Miklotov McMahon,Human,Male,N/A,No,160cm,Royal Capital,No,74,F
-Bordeaux Zellgef,Human,Male,N/A,No,Unkown,Royal Capital,No,Unknown,F
-Marcos Gildark,Human,Male,Earth,No,Unkown,Royal Capital,No,40,F
+Bordeaux Zellgef,Human,Male,N/A,No,Unknown,Royal Capital,No,Unknown,F
+Marcos Gildark,Human,Male,Earth,No,Unknown,Royal Capital,No,40,F
 Russell Fellow,Human,Male,N/A,No ,180cm,Royal Capital,Yes,29,F
-Kadomon Risch,Human,Male,N/A,No,N/A,Royal Capital,No,Unknown,F
+Kadomon Risch,Human,Male,N/A,No,Unknown,Royal Capital,No,Unknown,F
 Grimm Fauzen,Human,Male,N/A,No,180cm,Royal Capital,No,63,T
 Carol Remendis,Human,Female,N/A,No,164cm,Royal Capital,No,62,T
-Kiritaka Muse,Human,Male,N/A,No,Unkown,Pristella,No,Late 20s,F
-Reid Astrea,Human,Male,N/A,No,Unkown,Lugunica,No,400+,F
-Theresia van Astrea,Male,Female,Yang,No,162cm,Lugunica,Yes,46,T
-Volcanica,Dragon,Unkown,N/A,No,1500cm,Lugunica,No,1000+,F
+Kiritaka Muse,Human,Male,N/A,No,Unknown,Pristella,No,Late 20s,F
+Reid Astrea,Human,Male,N/A,No,Unknown,Lugunica,No,400+,F
+Theresia van Astrea,Human,Female,Yang,No,162cm,Lugunica,Yes,46,T
+Volcanica,Dragon,Unknown,N/A,No,1500cm,Lugunica,No,1000+,F
 Shaula,Demon Beast,Female,N/A,No,170cm,Pleiades Watchtower,No,400+,T
 Melakuera,Spirit,Male,Fire,No,Unknown,Lugunica,No,400+,F
 Liliana Masquerade,Human,Female,N/A,No,150cm,Pristella,Yes,22,T
 Fortuna,Elf,Female,Fire,No,168cm,Elior Forest,No,Unknown,T
 Arch Elior,Elf,Male,"Fire, Wind",No,172cm,Elior Forest,No,Unknown,F
 Vincent Vollachia,Human,Male,N/A,No,175cm,Vollachia,No,26,T
-Stride Vollachia,Human,Male,N/A,Yes,Unknown,Vollachia,No,28,T
+Stride Vollachia,Human,Male ,N/A,Yes,Unknown,Vollachia,No,28,T
 Lamia Godwin,Human,Female,N/A,No,Unknown,Vollachia,No,16,F
 Eugard Vollachia,Human,Male,N/A,No,Unknown,Vollachia,No,Unknown,T
 Cecilus Segmunt,Human,Male,N/A,No,Unknown,Vollachia,No,19,T

@@ -2,11 +2,14 @@
 import pandas as pd
 import os
 import re
+import random
+import datetime
+import linecache
 
 class CharacterData:
     def __init__(self):
-        current_dir = os.path.dirname(os.path.abspath(__file__))
-        path = os.path.join(current_dir, 'data', 'character_info.csv')
+        self.current_dir = os.path.dirname(os.path.abspath(__file__))
+        path = os.path.join(self.current_dir, 'data', 'character_info.csv')
         self.df = pd.read_csv(path)
         
     def load_characters(self):
@@ -14,7 +17,10 @@ class CharacterData:
     
     def load_character_stats(self, character):
         character_df = self.df[self.df['Character'] == character]
-        return {k:str(v) for k,v in character_df.iloc[0].to_dict().items()}
+        stats = {k:str(v) for k,v in character_df.iloc[0].to_dict().items()}
+        if stats['Elemental Affinity'] == 'nan':
+            stats['Elemental Affinity'] = 'N/A'
+        return stats
     
     def character_guess(self, answer, guess):
         #GUESS WILL BE True WHEN CORRECT
@@ -41,6 +47,31 @@ class CharacterData:
         data['HeightArrow'] = compareNumb(answer['Height'], guess['Height'])
 
         return data
+    
+    def generate_daily_answers(self):
+        CYCLES = 25
+        path = os.path.join(self.current_dir, 'data', 'answers.txt')
+        valid_characters = self.df.loc[self.df['Priority'] == 'T', 'Character'].tolist()
+
+        if os.path.exists(path):
+            os.remove(path)
+
+        with open(path, 'w') as f:
+            for _ in range(CYCLES):
+                random.shuffle(valid_characters)
+                for character in valid_characters:
+                    f.write(f'{character}\n')
+
+    def get_daily_character(self):
+        path = os.path.join(self.current_dir, 'data', 'answers.txt')
+        line_number = getCurrentDay()
+        character = linecache.getline(path, line_number)
+        return character.strip()
+
+def getCurrentDay():
+    start = datetime.date(2024, 4, 28)
+    today = datetime.date.today()
+    return ((today - start).days + 1) % 1850
 
 def compareNumb(answer, guess):
     answer = re.sub(r'\D', '', answer)
@@ -69,7 +100,13 @@ def checkPartial(answer, guess):
         return 'partial'
     return 'incorrect'
 
+current_time = datetime.datetime.now().time()
+formatted_time = current_time.strftime("%I:%M:%S %p")
+print("Current time:", formatted_time)
+
 # c = CharacterData()
+# print(c.get_daily_character())
+# c.generate_daily_answers()
 # print(c.character_guess('Subaru Natsuki', 'Felix Argyle'))
 # c.load_character_stats('Subaru Natsuki')
 # print(c.load_characters())

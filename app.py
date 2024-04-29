@@ -27,6 +27,11 @@ def guess():
 
     return jsonify(CD.character_guess(answer, guess))
 
+@app.route('/load_daily_character_stats', methods=['GET'])
+def get_daily():
+    return jsonify(CD.load_character_stats(CD.get_daily_character()))
+    
+
 
 if __name__ == '__main__':
     app.run(debug=True)

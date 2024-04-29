@@ -14,7 +14,19 @@
 }
 
 .custom-body{
-    background: var(--background-color);
+    font-family: Ubuntu, Helvetica, Arial;
+
+    background-image: linear-gradient(to top, black, transparent), url('/static/img/background_pg2.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+
     height: 100%;
     color: var(--text-color);
 }
@@ -23,6 +35,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     width: 80%;
     color: var(--text-color);
     margin-top: 2rem;
@@ -33,6 +46,15 @@
 .header-container h1 {
     text-align: center;
     font-size: 5rem;
+}
+
+.header-container img {
+    justify-content: center;
+    align-items: center;
+    max-width: 350px;
+    width: 80%;
+    -webkit-filter: drop-shadow(0px 0px 5px #222);
+    filter: drop-shadow(0px 0px 3px #222);
 }
 
 .main-container {
@@ -336,7 +358,7 @@
 .box-animation.active {
     color: transparent;
     transition: transform 2s;
-    background: var(--background-color);
+    background: transparent;
     font-size: 0;
     transform: rotateY(180deg);
 }
@@ -347,4 +369,95 @@
     text-shadow: 0 0 0px transparent;
 }
 
+.win-screen {
+    font-size: 1.5rem;
+    width: 100%;
+    margin-bottom: 5rem;
+}
 
+.win-background {
+    border-radius: 8px;
+    padding: 3rem 3rem;
+    display: flex;
+    flex-direction: column;
+    vertical-align: center;
+    justify-self: center;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    background: linear-gradient(#0d4d27, #1e2328);
+    border: 2px solid #69ffa5;
+    row-gap: .5rem;
+}
+
+.yay-image{
+    width: 80%;
+}
+
+.yay-image img{
+    width: 100%;
+}
+
+.nb-trys{
+    font-size: 1.2rem;
+    width: 80%;
+}
+
+.timer-title{
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1.3rem;
+}
+
+.timer{
+    font-size: 2rem;
+    font-weight: 800;
+    text-align: center;
+}
+
+.countdown {
+    margin-top: -15px;
+}
+
+.countdown ul {
+    padding-left: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.countdown ul li {
+    list-style-type: none;
+}
+
+.countdown li span{
+    display: block;
+    font-size: 3.5rem;
+}
+
+.countdown .separator{
+    line-height: 1.35;
+    margin: 0 2px;
+    font-size: 3.5rem;
+}
+
+.win-answer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    column-gap: .8rem;
+}
+
+.win-answer img {
+    border: 1px solid hsla(0, 0%, 100%, .59);
+    width: 80px;
+}
+
+.win-answer-name {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.win-answer-text {
+    font-size: .9rem;
+}

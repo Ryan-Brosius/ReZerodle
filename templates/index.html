@@ -12,7 +12,7 @@
     <!-- HEADER OF THE WEBSITE -->
     <!-- TODO: CHANGE THIS TO AN IMAGE LATER AND MAKE CLICKABLE -->
     <div class="container mx-auto header-container">
-        <h1>Re:Zero...dle</h1>
+        <img src="/static/img/rezerodle_title.png">
     </div>
 
     <!-- THE MAIN DIV THAT HANDLES THE BODY -->
@@ -205,10 +205,32 @@
                 </div>
 
             </div>
+
+            <div class="win-screen fancy-background" style="display: none;">
+                <div class="yay">
+                    <h1>You answered correctly!</h1>
+                </div>
+                <div class="yay-image">
+                    <img src="https://c.tenor.com/KA_7-nP-MbAAAAAC/tenor.gif">
+                </div>
+                <div class="timer-info">
+                    <div class="timer-title">Next character in</div>
+                    <div class="countdown">
+                        <ul>
+                            <li><span id="hours">00</span></li>
+                            <li class="separator">:</li>
+                            <li><span id="minutes">00</span></li>
+                            <li class="separator">:</li>
+                            <li><span id="seconds">00</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
 
 <script src="static/javascript/options_logic.js"></script>
+<script src="static/javascript/countdown.js"></script>
 
 </html>
