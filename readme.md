@@ -1,8 +1,8 @@
 # ReZero.dle App
 
 This is a website me and my friend Ethan worked on inspired by the loldle website you can find [here](https://loldle.net/classic).<br>
-It uses Flask to call the python backend, and some javascript to parse that backend. I had a lot of fun trying to figure out how the<br>
-loldle website works, and making this website fun and unique it its own way. I hope you enjoy playing the game as much as I did creating it!<br>
+It uses Flask to call the python backend, and some javascript to parse that backend. I had a lot of fun trying to figure out how the
+loldle website works, and making this website fun and unique it its own way. I hope you enjoy playing the game as much as I did creating it!
 
 ## Prerequisites
 
