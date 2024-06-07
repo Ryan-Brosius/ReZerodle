@@ -50,9 +50,5 @@ loldle website works, and making this website fun and unique it its own way. I h
 4. Enjoy playing the game!!
 
 ## Examples of the Website!!
-<div align="center">
-    <img src="https://i.imgur.com/d11t9GP.gif" alt="Description of the image">
-</div>
-<div align="center">
-    <img src="https://i.imgur.com/sFN55OZ.gif" alt="Description of the image">
-</div>
+![Screenshot](https://i.imgur.com/d11t9GP.gif)
+![Screenshot](https://i.imgur.com/sFN55OZ.gif)
