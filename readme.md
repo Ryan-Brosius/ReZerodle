@@ -1,8 +1,12 @@
+<div align="center">
+    <img src="https://i.imgur.com/5cXLGOq.png" alt="Description of the image">
+</div>
+
 # ReZero.dle App
 
 This is a website me and my friend Ethan worked on inspired by the loldle website you can find [here](https://loldle.net/classic).<br>
 It uses Flask to call the python backend, and some javascript to parse that backend. I had a lot of fun trying to figure out how the
-loldle website works, and making this website fun and unique it its own way. I hope you enjoy playing the game as much as I did creating it!
+loldle website works, and making this website fun and unique it its own way. I hope you enjoy playing the game as much as I did creating it!<br>
 
 ## Prerequisites
 
@@ -44,3 +48,11 @@ loldle website works, and making this website fun and unique it its own way. I h
 3. Open your browser and go to `https://localhost:5000` to launch the website.
 
 4. Enjoy playing the game!!
+
+## Examples of the Website!!
+<div align="center">
+    <img src="https://i.imgur.com/d11t9GP.gif" alt="Description of the image">
+</div>
+<div align="center">
+    <img src="https://i.imgur.com/sFN55OZ.gif" alt="Description of the image">
+</div>
