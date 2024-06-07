@@ -164,11 +164,11 @@ function clearSelections() {
     });
 }
 
+document.querySelector('.guessed-answers-header').style.display = 'none';
 function updateChoice(div, character)
 {
-    console.log("Just selected the character " + character);
+    document.querySelector('.guessed-answers-header').style.display = 'block';
     numOfGuesses++;
-    console.log(numOfGuesses)
     searchInp.value = '';
     prevInput = "";
     characterDivs = [];
@@ -422,4 +422,8 @@ function correctGuessTriggered(){
     let winningDiv = document.querySelector('.win-screen');
     winningDiv.style.display = 'flex';
     loadWinningDiv()
+    document.querySelector('.guessbox').style.display = 'none';
+    document.querySelector('.countdown').scrollIntoView({
+        behavior: 'smooth'
+    });
 }

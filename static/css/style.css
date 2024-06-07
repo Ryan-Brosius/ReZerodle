@@ -5,7 +5,7 @@
 
     /* Colors for debugging menus & stuff */
     /* --debug-color: transparent; */
-    --debug-color: var(--primary-color);
+    --debug-color: transparent;
 
     /* Colors of da squares */
     --correct-color: #00b42d;
