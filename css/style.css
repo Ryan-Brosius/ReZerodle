@@ -16,7 +16,7 @@
 .custom-body{
     font-family: Ubuntu, Helvetica, Arial;
 
-    background-image: linear-gradient(to top, black, transparent), url('img/background_pg2.png');
+    background-image: linear-gradient(to top, black, transparent), url('../img/background_pg2.png');
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
