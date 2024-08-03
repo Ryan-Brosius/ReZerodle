@@ -8,7 +8,7 @@ searchInp = guessbox.querySelector("input");
 window.onload = function() {
     CD = new CharacterData()
     setCharacters()
-    answer = CD.loadCharacterStats("Subaru Natsuki")
+    answer = loadDailyCharacterFetch();
 };
 
 //Array we will store the characters in
@@ -331,7 +331,7 @@ async function loadWinningDiv(){
 
     let imgdiv = document.createElement('div');
     let portrait = document.createElement('img');
-    portrait.src = "/img/Character-Portraits/" + charAnswer + '.png';
+    portrait.src = "img/Character-Portraits/" + charAnswer + '.png';
     imgdiv.appendChild(portrait)
 
     let textdiv = document.createElement('div');
