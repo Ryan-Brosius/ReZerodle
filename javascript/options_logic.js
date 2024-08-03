@@ -1,24 +1,22 @@
 
 const guessbox = document.querySelector(".guessbox");
+
+
 options = guessbox.querySelector(".options");
 searchInp = guessbox.querySelector("input");
 
+window.onload = function() {
+    CD = new CharacterData()
+    setCharacters()
+    answer = CD.loadCharacterStats("Subaru Natsuki")
+};
+
 //Array we will store the characters in
 let characters = [];
-setCharacters()
 let alreadyChosenCharacters = []
 let characterDivs = []
-let answer = loadDailyCharacterFetch()
+let answer;
 let numOfGuesses = 0
-
-async function chooseRandomCharacter() {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            const random = characters[Math.floor(Math.random() * characters.length)];
-            resolve(random);
-        }, 300);
-    });
-}
 
 function addCharacter(characters)
 {
@@ -32,7 +30,7 @@ function addCharacter(characters)
         div.classList.add('character-item');
         div.innerHTML = `<div class="character-select">
                                <div>
-                                   <img src="static/img/Character-Portraits/${char}.png">
+                                   <img src="img/Character-Portraits/${char}.png">
                                </div>
                             <div>
                                 ${char}
@@ -180,12 +178,7 @@ function updateChoice(div, character)
 }
 
 function setCharacters(){
-    fetch('/get_characters')
-    .then(response => response.json())
-    .then(data => {
-        characters = data;
-    })
-    .catch(error => console.log('Error: ', error));
+    characters = CD.loadCharacters()
 }
 
 function loadCharacterFetch(character_name){
@@ -193,31 +186,12 @@ function loadCharacterFetch(character_name){
         'Character' : character_name
     };
 
-    return fetch('/load_character_stats', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    })
-    .then(response => {
-        if (!response.ok) {
-            console.log("Loading character " + character_name + " failed")
-        }
-        return response.text();
-    })
-    .catch(error => {
-        console.log(error);
-    });
+    return CD.loadCharacterStats(character_name)
 }
 
 async function loadCharacter(character_name){
-    if (character_name instanceof Promise) {
-        character_name = await character_name;
-    }
 
-    let character = await loadCharacterFetch(character_name);
-    return JSON.parse(character);
+    return loadCharacterFetch(character_name);
 }
 
 async function makeGuessFetch(character_name){
@@ -228,27 +202,11 @@ async function makeGuessFetch(character_name){
         'Guess' : character_name
     };
 
-    return fetch('/guess', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    })
-    .then(response => {
-        if (!response.ok) {
-            console.log("Guess for " + character_name + " failed")
-        }
-        return response.text();
-    })
-    .catch(error => {
-        //console.log(error);
-    });
+    return CD.characterGuess(character_answer.Character, character_name)
 }
 
 async function sendGuess(character_name){
     let guess = await makeGuessFetch(character_name);
-    guess = JSON.parse(guess)
     return guess;
 }
 
@@ -258,6 +216,7 @@ async function addGuessToDiv(guess_data, character_data){
     let GD = await guess_data
     let CD = await character_data
 
+    console.log(GD);
 
     if (GD['Guess'] == 'correct'){
         setTimeout(() => {
@@ -266,7 +225,7 @@ async function addGuessToDiv(guess_data, character_data){
     }
 
     const squareContent = [
-        "static/img/Character-Portraits/" + CD['Character'] + '.png',
+        "img/Character-Portraits/" + CD['Character'] + '.png',
         CD.Gender,
         CD.Race,
         CD.Height,
@@ -358,20 +317,7 @@ async function addGuessToDiv(guess_data, character_data){
 
 
 function loadDailyCharacterFetch() {
-    return fetch('/load_daily_character_stats')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Failed to fetch data');
-            }
-            return response.json();
-        })
-        .then(data => {
-            return data;
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            return null;
-        });
+    return CD.loadCharacterStats(CD.getDailyCharacter())
 }
 
 async function loadWinningDiv(){
@@ -385,7 +331,7 @@ async function loadWinningDiv(){
 
     let imgdiv = document.createElement('div');
     let portrait = document.createElement('img');
-    portrait.src = "/static/img/Character-Portraits/" + charAnswer + '.png';
+    portrait.src = "/img/Character-Portraits/" + charAnswer + '.png';
     imgdiv.appendChild(portrait)
 
     let textdiv = document.createElement('div');
@@ -413,7 +359,6 @@ async function loadWinningDiv(){
     winningDiv.appendChild(imgtextdiv)
     winningDiv.appendChild(nbdiv)
 
-    console.log(timerdiv)
 
     winningDiv.appendChild(timerdiv)
 }
