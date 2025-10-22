@@ -28,14 +28,14 @@ function addCharacter(characters)
     characters.forEach(char => {
         let div = document.createElement('div');
         div.classList.add('character-item');
-        div.innerHTML = `<div class="character-select">
+        div.innerHTML = `<button class="character-select">
                                <div>
                                    <img src="img/Character-Portraits/${char}.png">
                                </div>
                             <div>
                                 ${char}
                             </div>
-                            </div>`;
+                            </button>`;
     
         div.addEventListener('click', function() {
             updateChoice(this, char);

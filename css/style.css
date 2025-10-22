@@ -141,7 +141,14 @@
     flex-direction: row;
     column-gap: 1rem;
     align-items: center;
+    justify-content: start;
     text-align: center;
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding: 0px;
+    background-color: inherit;
+    color: inherit;
 }
 
 .character-select img {
